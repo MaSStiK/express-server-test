@@ -9,9 +9,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 const mongodbUri = process.env.MONGODB_URI || "mongodb-uri"
 
-mongoose.connect(mongodbUri, {
-    bufferCommands: false,
-}).then(() => {
+mongoose.connect(mongodbUri).then(() => {
     console.log("Connected to MongoDB");
 }).catch(error => {
     console.log("MongoDB connection error:", error);
@@ -42,4 +40,6 @@ app.get("/ejs", (req, res) => {
     res.render("index", { title: "Hello, EJS!", user: { name: "John Doe" } })
 })
 
-module.exports = app;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+})
