@@ -4,7 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start:pm2": "pm2 start app.js --name todo-list",
+    "stop:pm2": "pm2 stop todo-list",
+    "restart:pm2": "pm2 restart todo-list"
   },
   "keywords": [],
   "author": "",
