@@ -6,8 +6,8 @@ const methodOverride = require("method-override")
 const path = require("path")
 
 const app = express()
-const PORT = process.env.PORT || 3000
-const mongodbUri = process.env.MONGODB_URI || "mongodb-uri"
+const PORT = process.env.PORT
+const mongodbUri = process.env.MONGODB_URI
 
 mongoose.connect(mongodbUri).then(() => {
     console.log("Connected to MongoDB");
