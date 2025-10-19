@@ -42,4 +42,4 @@ app.get("/ejs", (req, res) => {
     res.render("index", { title: "Hello, EJS!", user: { name: "John Doe" } })
 })
 
-module.exports = app
+module.exports = app;
