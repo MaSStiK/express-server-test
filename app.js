@@ -13,7 +13,6 @@ mongoose.connect(mongodbUri).then(() => {
     console.log("Connected to MongoDB");
 }).catch(error => {
     console.log("MongoDB connection error:", error);
-    process.exit()
 })
 
 // Настройка EJS
@@ -41,6 +40,4 @@ app.get("/ejs", (req, res) => {
     res.render("index", { title: "Hello, EJS!", user: { name: "John Doe" } })
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-})
+module.exports = app
