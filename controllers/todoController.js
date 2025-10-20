@@ -26,7 +26,7 @@ module.exports.createTodo = async (req, res) => {
 
     try {
         await newTodo.save()
-        console.log(`New todo: ${title}, ${description}`);
+        console.log(`New todo: ${title || "empty title"}, ${description || "empty description"}`);
         res.redirect("/todos")
     } catch (error) {
         console.log("error createTodo");
@@ -47,7 +47,7 @@ module.exports.updateTodo = async (req, res) => {
 
     try {
         await Todo.findByIdAndUpdate(id, { title, description, completed: completed === "on" })
-        console.log(`Update todo: ${title}, ${description}, ${completed}`);
+        console.log(`Update todo: ${title || "empty title"}, ${description || "empty description"}, ${completed}`);
         res.redirect("/todos")
     } catch (error) {
         console.log("error updateTodo");
