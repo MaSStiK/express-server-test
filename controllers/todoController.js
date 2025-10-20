@@ -5,6 +5,7 @@ const Todo = require("../models/todo")
 module.exports.getTodos = async (req, res) => {
     try {
         const todos = await Todo.find()
+        console.log(`Get todo: ${todos.length}`);
         res.render("todos", { todos, errors: null })
     } catch (error) {
         console.log("error getTodos", error);
@@ -25,6 +26,7 @@ module.exports.createTodo = async (req, res) => {
 
     try {
         await newTodo.save()
+        console.log(`New todo: ${title}, ${description}`);
         res.redirect("/todos")
     } catch (error) {
         console.log("error createTodo");
@@ -45,6 +47,7 @@ module.exports.updateTodo = async (req, res) => {
 
     try {
         await Todo.findByIdAndUpdate(id, { title, description, completed: completed === "on" })
+        console.log(`Update todo: ${title}, ${description}, ${completed}`);
         res.redirect("/todos")
     } catch (error) {
         console.log("error updateTodo");
@@ -55,9 +58,9 @@ module.exports.updateTodo = async (req, res) => {
 // Удаление задачи
 module.exports.deleteTodo = async (req, res) => {
     const { id } = req.params
-
     try {
         await Todo.findByIdAndDelete(id)
+        console.log(`Delete todo: ${id}`);
         res.redirect("/todos")
     } catch (error) {
         console.log("error deleteTodo");
